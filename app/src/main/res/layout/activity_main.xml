@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/userChoice"
+        android:src="@drawable/rock"
+        android:layout_above="@+id/texta"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="25sp"
+        android:text="A te választásod"
+        android:layout_centerInParent="true"
+        android:id="@+id/texta"/>
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/aiChoice"
+        android:src="@drawable/rock"
+        android:layout_below="@+id/texta"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="25sp"
+        android:text="A te választásod"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/aiChoice"
+        android:id="@+id/textb"/>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:id="@+id/linearLayout"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/textb"
+        android:layout_marginTop="25dp">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="25sp"
+            android:text="Eredmény: "/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="25sp"
+            android:text="Ember: 0 "
+            android:id="@+id/emberPoints"/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="25sp"
+            android:text="Computer: 0"
+            android:id="@+id/computerPoints"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginTop="25dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/choiceKo"
+            android:text="Kő"
+            android:textSize="25sp"
+            android:backgroundTint="@color/gray"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/choicePapir"
+            android:text="Papír"
+            android:textSize="25sp"
+            android:backgroundTint="@color/gray"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/choiceOllo"
+            android:text="Olló"
+            android:textSize="25sp"
+            android:backgroundTint="@color/gray"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
