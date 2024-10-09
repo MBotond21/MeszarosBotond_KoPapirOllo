@@ -7,10 +7,70 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/aiHeart1"
+            android:src="@drawable/heart2"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/aiHeart2"
+            android:src="@drawable/heart2"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/aiHeart3"
+            android:src="@drawable/heart2"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="25sp"
+            android:text="Gép"
+            android:layout_marginRight="15dp"/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="25sp"
+            android:text="Ember"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/emberHeart1"
+            android:src="@drawable/heart2"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/emberHeart2"
+            android:src="@drawable/heart2"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/emberHeart3"
+            android:src="@drawable/heart2"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="25sp"
+        android:text="Döntetlenek száma: 0"
+        android:layout_centerInParent="true"
+        android:id="@+id/drawCount"
+        android:layout_above="@+id/aiChoice"/>
+
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/userChoice"
+        android:id="@+id/aiChoice"
         android:src="@drawable/rock"
         android:layout_above="@+id/texta"
         android:layout_centerInParent="true"/>
@@ -18,13 +78,13 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textSize="25sp"
-        android:text="A te választásod"
+        android:text="A gép választása"
         android:layout_centerInParent="true"
         android:id="@+id/texta"/>
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/aiChoice"
+        android:id="@+id/userChoice"
         android:src="@drawable/rock"
         android:layout_below="@+id/texta"
         android:layout_centerInParent="true"/>
@@ -32,69 +92,35 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textSize="25sp"
-        android:text="A gép választása"
+        android:text="A te választásod"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/aiChoice"
+        android:layout_below="@+id/userChoice"
         android:id="@+id/textb"/>
 
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:gravity="center"
-        android:id="@+id/linearLayout"
         android:layout_centerInParent="true"
         android:layout_below="@+id/textb"
         android:layout_marginTop="25dp">
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="25sp"
-            android:text="Eredmény: "/>
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="25sp"
-            android:text="Ember: 0 "
-            android:id="@+id/emberPoints"/>
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="25sp"
-            android:text="Computer: 0"
-            android:id="@+id/computerPoints"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/chooseKo"
+            android:src="@drawable/rock"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/choosePapir"
+            android:src="@drawable/paper"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/chooseOllo"
+            android:src="@drawable/scissors"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:gravity="center"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/linearLayout"
-        android:layout_marginTop="25dp">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/choiceKo"
-            android:text="Kő"
-            android:textSize="25sp"
-            android:backgroundTint="@color/gray"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/choicePapir"
-            android:text="Papír"
-            android:textSize="25sp"
-            android:backgroundTint="@color/gray"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/choiceOllo"
-            android:text="Olló"
-            android:textSize="25sp"
-            android:backgroundTint="@color/gray"/>
 
     </LinearLayout>
 

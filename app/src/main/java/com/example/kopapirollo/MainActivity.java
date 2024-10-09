@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,15 +18,27 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button ko;
-    private Button papir;
-    private Button ollo;
+    private ImageView ko;
+    private ImageView papir;
+    private ImageView ollo;
+
+    private ImageView eHeart1;
+    private ImageView eHeart2;
+    private ImageView eHeart3;
+
+    private ImageView aiHeart1;
+    private ImageView aiHeart2;
+    private ImageView aiHeart3;
+
+    private int drawCount;
+    private TextView drawView;
+
     private ImageView emberChoice;
     private ImageView computerChoice;
     private TextView emberPointsView;
     private TextView computerPointsView;
-    private int emberPoints;
-    private int computerPoints;
+    private int emberElet;
+    private int computerElet;
     private int user;
     private int computer;
     private Random rnd;
@@ -61,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 user = 2;
                 computerChoose();
                 calcResults();
+                eletModositas();
                 checkForEnd();
             }
         });
@@ -71,21 +83,34 @@ public class MainActivity extends AppCompatActivity {
                 user = 3;
                 computerChoose();
                 calcResults();
+                eletModositas();
                 checkForEnd();
             }
         });
     }
 
     public void init(){
-        this.ko = findViewById(R.id.choiceKo);
-        this.papir = findViewById(R.id.choicePapir);
-        this.ollo = findViewById(R.id.choiceOllo);
+        this.ko = findViewById(R.id.chooseKo);
+        this.papir = findViewById(R.id.choosePapir);
+        this.ollo = findViewById(R.id.chooseOllo);
+
+        this.drawCount = 0;
+        this.drawView = findViewById(R.id.drawCount);
+
+        this.eHeart1 = findViewById(R.id.emberHeart1);
+        this.eHeart2 = findViewById(R.id.emberHeart2);
+        this.eHeart3 = findViewById(R.id.emberHeart3);
+
+        this.aiHeart1 = findViewById(R.id.aiHeart1);
+        this.aiHeart2 = findViewById(R.id.aiHeart2);
+        this.aiHeart3 = findViewById(R.id.aiHeart3);
+
         this.emberChoice = findViewById(R.id.userChoice);
         this.computerChoice = findViewById(R.id.aiChoice);
-        this.emberPointsView = findViewById(R.id.emberPoints);
-        this.computerPointsView = findViewById(R.id.computerPoints);
-        this.emberPoints = 0;
-        this.computerPoints = 0;
+        //this.emberPointsView = findViewById(R.id.emberPoints);
+        //this.computerPointsView = findViewById(R.id.computerPoints);
+        this.emberElet = 3;
+        this.computerElet = 3;
         this.user = 1;
         this.computer = 1;
         this.rnd = new Random();
@@ -122,68 +147,103 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void draw(){
+        drawCount++;
+        drawView.setText("Döntetlenek száma: " + drawCount);
+    }
+
     public void calcResults(){
         switch (user){
             case 1:
                 switch(computer) {
                     case 2:
-                        computerPoints++;
-                        computerPointsView.setText("Computer: " + computerPoints);
+                        emberElet--;
                         Toast.makeText(MainActivity.this, "Ezt a kört a gép nyerte!", Toast.LENGTH_SHORT).show();
                         break;
                     case 3:
-                        emberPoints++;
-                        emberPointsView.setText("Ember: " + emberPoints);
+                        computerElet--;
                         Toast.makeText(MainActivity.this, "Ezt a kört te nyerted!", Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        draw();
                         break;
                 }
                 break;
             case 2:
                 switch(computer) {
                     case 1:
-                        emberPoints++;
-                        emberPointsView.setText("Ember: " + emberPoints);
+                        computerElet--;
                         Toast.makeText(MainActivity.this, "Ezt a kört te nyerted!", Toast.LENGTH_SHORT).show();
                         break;
                     case 3:
-                        computerPoints++;
-                        computerPointsView.setText("Computer: " + computerPoints);
+                        emberElet--;
                         Toast.makeText(MainActivity.this, "Ezt a kört a gép nyerte!", Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        draw();
                         break;
                 }
                 break;
             case 3:
                 switch(computer) {
                     case 2:
-                        emberPoints++;
-                        emberPointsView.setText("Ember: " + emberPoints);
+                        computerElet--;
                         Toast.makeText(MainActivity.this, "Ezt a kört te nyerted!", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-                        computerPoints++;
-                        computerPointsView.setText("Computer: " + computerPoints);
+                        emberElet--;
                         Toast.makeText(MainActivity.this, "Ezt a kört a gép nyerte!", Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        draw();
                         break;
                 }
         }
 
     }
 
+    public void eletModositas(){
+        if (emberElet == 2){
+            eHeart3.setImageResource(R.drawable.heart1);
+        }
+        if (emberElet == 1){
+            eHeart2.setImageResource(R.drawable.heart1);
+        }
+        if (emberElet == 0){
+            eHeart1.setImageResource(R.drawable.heart1);
+        }
+        if (computerElet == 2){
+            aiHeart3.setImageResource(R.drawable.heart1);
+        }
+        if (computerElet == 1){
+            aiHeart2.setImageResource(R.drawable.heart1);
+        }
+        if (computerElet == 0){
+            aiHeart1.setImageResource(R.drawable.heart1);
+        }
+    }
+
     public void checkForEnd(){
-        if(emberPoints == 3){
-            alertDialog.show();
-        } else if (computerPoints == 3) {
+        if(emberElet == 0){
             alertDialog.setTitle("Vereség");
             alertDialog.create();
+            alertDialog.show();
+        } else if (computerElet == 0) {
             alertDialog.show();
         }
     }
 
     public void ujJatek(){
-        emberPoints = 0;
-        computerPoints = 0;
-        computerPointsView.setText("Computer: " + computerPoints);
-        emberPointsView.setText("Ember: " + emberPoints);
+        emberElet = 3;
+        computerElet = 3;
+        drawCount = 0;
+        eHeart1.setImageResource(R.drawable.heart2);
+        eHeart2.setImageResource(R.drawable.heart2);
+        eHeart3.setImageResource(R.drawable.heart2);
+        aiHeart1.setImageResource(R.drawable.heart2);
+        aiHeart2.setImageResource(R.drawable.heart2);
+        aiHeart3.setImageResource(R.drawable.heart2);
+        drawView.setText("Döntetlenek száma: 0");
     }
 
 }
